@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Poet’s World</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Crimson+Pro:wght@300;400&display=swap" rel="stylesheet" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Crimson Pro', serif;
+      background: #000;
+      overflow: hidden;
+    }
+
+    body {
+      background-image: url('https://cdn.shortpixel.ai/spai/q_glossy+ret_img+to_auto/www.slantmagazine.com/wp-content/uploads/2024/04/torturedpoetsdepartment.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(10, 10, 10, 0.6);
+      backdrop-filter: blur(6px);
+      z-index: 0;
+    }
+
+    .container {
+      z-index: 2;
+      text-align: center;
+      color: #f5f1e5;
+      max-width: 800px;
+      padding: 40px;
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      color: #d6cbb1;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5.5rem;
+      letter-spacing: 4px;
+      color: #f5f1e5;
+      text-shadow: 0 0 10px #bba68b;
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInTitle 2s ease-out forwards;
+    }
+
+    .subtitle {
+      font-style: italic;
+      font-size: 1.5rem;
+      color: #dcd6c8;
+      margin-bottom: 50px;
+    }
+
+    .quote {
+      font-size: 1.2rem;
+      color: #e3dfcc;
+      font-style: italic;
+      opacity: 0;
+      transition: opacity 0.6s;
+      margin-bottom: 60px;
+    }
+
+    .next-era {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      color: #fff;
+      text-decoration: none;
+      padding: 12px 28px;
+      border: 1px solid #bba68b;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.05);
+      transition: all 0.3s ease;
+    }
+
+    .next-era:hover {
+      background: rgba(255,255,255,0.15);
+      box-shadow: 0 0 10px #bba68b;
+      color: #fffce8;
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 20px;
+      font-size: 0.85rem;
+      color: #a9a394;
+      font-family: 'Crimson Pro', serif;
+      z-index: 2;
+    }
+
+    @keyframes fadeInTitle {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 3.5rem;
+        letter-spacing: 2px;
+      }
+      .subtitle {
+        font-size: 1.2rem;
+      }
+      .quote {
+        font-size: 1rem;
+      }
+    }
+
+    /* Sparkling Dust Effect */
+    .sparkle {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .sparkle span {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      animation: sparkle 2s infinite ease-in-out;
+      box-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
+    }
+
+    @keyframes sparkle {
+      0% {
+        transform: scale(0) translateX(0) translateY(0);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(0.5) translateX(5px) translateY(5px);
+        opacity: 0.4;
+      }
+      100% {
+        transform: scale(0) translateX(0) translateY(0);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="sparkle"></div>
+  <div class="container">
+    <div class="logo">✧ The Poet’s Seal ✧</div>
+    <h1>Welcome to Poet’s World</h1>
+    <div class="subtitle">We all have a story,<br> from where it begins to where it leads.</div>
+    <div class="quote" id="quote">“The world is quiet here.”</div>
+    <a href="nextera.html" class="next-era">Next Era</a>
+  </div>
+
+  <footer class="footer">&copy; 2025 The Poet’s World. All rights reserved.</footer>
+
+  <script>
+    const quotes = [
+      "“The world is quiet here.”",
+      "“Poetry is the spontaneous overflow of powerful feelings.” – William Wordsworth",
+      "“In the end, we'll all become stories.” – Margaret Atwood",
+      "“Poetry is language at its most distilled and most powerful.” – Rita Dove",
+      "“I shut my eyes in order to see.” – Paul Gauguin"
+    ];
+    const quoteEl = document.getElementById('quote');
+    let index = 0;
+
+    function showNextQuote() {
+      quoteEl.style.opacity = 0;
+      setTimeout(() => {
+        index = (index + 1) % quotes.length;
+        quoteEl.textContent = quotes[index];
+        quoteEl.style.opacity = 1;
+      }, 400);
+    }
+
+    setInterval(showNextQuote, 6000);
+
+    // Sparkling Dust Animation
+    function createSparkles() {
+      const sparkleContainer = document.querySelector('.sparkle');
+      for (let i = 0; i < 100; i++) {
+        let sparkle = document.createElement('span');
+        sparkle.style.top = `${Math.random() * 100}vh`;
+        sparkle.style.left = `${Math.random() * 100}vw`;
+        sparkle.style.animationDuration = `${Math.random() * 2 + 1}s`;
+        sparkle.style.animationDelay = `${Math.random() * 1}s`;
+        sparkleContainer.appendChild(sparkle);
+      }
+    }
+
+    createSparkles();
+  </script>
+</body>
+</html>

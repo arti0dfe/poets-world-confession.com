@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Taylor Swift - Lover Album</title>
+  <style>
+    /* Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
+      font-family: 'Georgia', serif;
+      background: linear-gradient(180deg, rgba(255, 182, 193, 1) 0%, rgba(204, 204, 255, 0.9) 60%, rgba(255, 182, 193, 1) 100%);
+      color: #c33884;
+      overflow-y: scroll;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      min-height: 100%;
+    }
+    header {
+      position: relative;
+      background: url('https://www.pluggedin.com/wp-content/uploads/2020/01/Taylor_Swift__Lover__Large-1200x688.jpg') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 6vh 20px;
+      min-height: 55vh;
+      box-shadow: 0 0 40px  rgba(255, 182, 193, 1);
+    }
+    header h1 {
+      font-size: 5.8rem;
+      font-weight: 700;
+      font-style: italic;
+      letter-spacing: 4px;
+      color: #f9f5f2;
+      text-shadow: 0 0 10px #e2c0a4;
+    }
+    header h2 {
+      font-size: 2.7rem;
+      font-weight: 600;
+      color: #f0e5d9;
+      text-shadow: 0 0 8px #c9a98c;
+    }
+    main {
+      padding: 40px 80px 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+    .description-container {
+      background: #ffb3c6;
+      border-radius: 20px;
+      padding: 32px 40px;
+      margin-top: 60px;
+      margin-bottom: 60px;
+      border: 2px solid #ff69b4;
+      box-shadow: 0 0 30px rgba(255, 105, 180, 0.6),
+                  0 0 20px rgba(255, 105, 180, 0.4) inset;
+      font-style: italic;
+      font-size: 1.4rem;
+      line-height: 1.8;
+      text-align: center;
+      color: #fff;
+    }
+    .track-item {
+      background: linear-gradient(145deg, #f8c9d1, #ffb3c6);
+      box-shadow: 0 0 18px rgba(255, 105, 180, 0.4);
+      border-radius: 14px;
+      border: 2px solid #e6d5c3;
+      padding: 24px 30px;
+      list-style: none;
+      position: relative;
+      margin-bottom: 24px; /* creates space between messages */
+    }
+    .message-block {
+      background: linear-gradient(180deg, rgba(255, 182, 193, 1) 0%, rgba(204, 204, 255, 0.9) 60%, rgba(255, 182, 193, 1) 100%);
+      border-radius: 12px;
+      padding: 16px 24px;
+      box-shadow:  inset 0 0 8px #ff69b4;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      white-space: pre-wrap;
+    }
+    form {
+      background: linear-gradient 135deg, rgba(255, 182, 193, 1), rgba(204, 204, 255,);
+      padding: 28px;
+      border-radius: 14px;
+      box-shadow: 0 0 20px rgb(249, 31, 89);
+      color: #f8f4ef;
+    }
+    form label {
+      display: block;
+      margin: 12px 0 6px;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 16px;
+      border-radius: 6px;
+      border: 1px solid #e3d5c4;
+      background: #ffa4d5;
+      color: #f7f2ec;
+      font-size: 1.1rem;
+      box-shadow: 0 0 8px rgb(238, 174, 209);
+    }
+    form button {
+      margin-top: 20px;
+      padding: 16px 24px;
+      background:  #ff69b4;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      color: #fffaf7;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+      transition: background 0.3s ease;
+    }
+    form button:hover {
+      background: linear-gradient(135deg, #cd9e79, #d4aa87);
+    }
+    .delete-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: #ff9aba;
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      box-shadow: 0 0 8px rgba(255, 130, 130, 0.3);
+    }
+    .delete-btn:hover {
+      background: #ffffff;
+    }
+  </style>
+
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>Lover</h1>
+      <h2>Taylor Swift</h2>
+    </header>
+
+    <main>
+      <!-- Spotify Embed -->
+      <div style="margin-bottom: 40px;">
+        <iframe style="border-radius:12px" 
+                src="https://open.spotify.com/embed/album/1NAmidJlEaVgA3MpcPFYGq?utm_source=generator"
+                width="100%" height="352" frameBorder="0" allowfullscreen="" 
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                loading="lazy"></iframe>
+      </div>
+
+      <!-- Message Submission Form -->
+      <form id="messageForm">
+        <label for="song">Song Title</label>
+        <input type="text" id="song" name="song" required>
+
+        <label for="lyric">Favorite Lyric</label>
+        <input type="text" id="lyric" name="lyric" required>
+
+        <label for="message">Your Message</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+
+        <button type="submit">Post Message</button>
+      </form>
+
+      <!-- Message Display Area -->
+      <ul id="messagesContainer"></ul>
+
+      <!-- Glowy Bottom Description -->
+      <div class="description-container">
+        This playlist is a tribute to the dreamy, romantic vibes of Taylor Swift's Lover album.<br>
+        Share your favorite lyrics and messages of love from this magical chapter.
+      </div>
+    </main>
+  </div>
+
+ <script>
+  const form = document.getElementById('messageForm');
+  const container = document.getElementById('messagesContainer');
+
+  // Load saved messages when the page loads
+  document.addEventListener('DOMContentLoaded', () => {
+    const saved = JSON.parse(localStorage.getItem('loverMessages')) || [];
+    saved.forEach(({ song, lyric, message }) => {
+      addMessage(song, lyric, message);
+    });
+  });
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const song = document.getElementById('song').value.trim();
+    const lyric = document.getElementById('lyric').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    if (!song || !lyric || !message) return;
+
+    addMessage(song, lyric, message);
+    saveMessage(song, lyric, message);
+    form.reset();
+  });
+
+  function addMessage(song, lyric, message) {
+    const li = document.createElement('li');
+    li.className = 'track-item';
+
+    const msgBlock = document.createElement('div');
+    msgBlock.className = 'message-block';
+    msgBlock.innerHTML = `
+      <strong>Song:</strong> ${song}<br>
+      <strong>Lyric:</strong> “${lyric}”<br>
+      <strong>Message:</strong> ${message}
+    `;
+
+    const deleteBtn = document.createElement('button');
+    deleteBtn.className = 'delete-btn';
+    deleteBtn.textContent = 'Delete';
+    deleteBtn.onclick = () => {
+      li.remove();
+      removeMessage(song, lyric, message);
+    };
+
+    li.appendChild(deleteBtn);
+    li.appendChild(msgBlock);
+    container.appendChild(li);
+  }
+
+  function saveMessage(song, lyric, message) {
+    const messages = JSON.parse(localStorage.getItem('loverMessages')) || [];
+    messages.push({ song, lyric, message });
+    localStorage.setItem('loverMessages', JSON.stringify(messages));
+  }
+
+  function removeMessage(song, lyric, message) {
+    let messages = JSON.parse(localStorage.getItem('loverMessages')) || [];
+    messages = messages.filter(m => !(m.song === song && m.lyric === lyric && m.message === message));
+    localStorage.setItem('loverMessages', JSON.stringify(messages));
+  }
+</script>
+</body>
+</body>
+</html>

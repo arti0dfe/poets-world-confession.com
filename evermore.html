@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Taylor Swift - Evermore Album</title>
+  <style>
+    /* Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
+      font-family: 'Georgia', serif;
+      background: linear-gradient(135deg, #3e2f2f, #6b5440);
+      color: #f7f3ed;
+      overflow-y: scroll;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      min-height: 100%;
+    }
+    header {
+      position: relative;
+      background: linear-gradient(rgba(55, 42, 42, 0.6), rgba(80, 65, 50, 0.8)),
+        url('https://upload.wikimedia.org/wikipedia/en/0/0a/Taylor_Swift_-_Evermore.png') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 6vh 20px;
+      min-height: 55vh;
+      box-shadow: 0 0 40px rgba(255, 200, 150, 0.25);
+    }
+    header h1 {
+      font-size: 5.8rem;
+      font-weight: 700;
+      font-style: italic;
+      letter-spacing: 4px;
+      color: #f9f5f2;
+      text-shadow: 0 0 10px #e2c0a4;
+    }
+    header h2 {
+      font-size: 2.7rem;
+      font-weight: 600;
+      color: #f0e5d9;
+      text-shadow: 0 0 8px #c9a98c;
+    }
+    main {
+      padding: 40px 80px 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+    .description-container {
+      background: linear-gradient(145deg, rgba(94, 88, 79, 0.7), rgba(129, 110, 94, 0.7));
+      border-radius: 18px;
+      padding: 32px 40px;
+      box-shadow: 0 0 30px rgba(230, 190, 160, 0.3);
+      font-style: italic;
+      font-size: 1.4rem;
+      line-height: 1.8;
+    }
+    .track-item {
+      background: linear-gradient(145deg, #7d6656, #9e8572);
+      box-shadow: 0 0 18px rgba(255, 200, 160, 0.2);
+      border-radius: 14px;
+      border: 2px solid #e6d5c3;
+      padding: 24px 30px;
+      list-style: none;
+      position: relative;
+      margin-bottom: 24px; /* creates space between messages */
+    }
+    .message-block {
+      background: rgba(90, 80, 70, 0.65);
+      border-radius: 12px;
+      padding: 16px 24px;
+      box-shadow: inset 0 0 8px rgba(255, 220, 180, 0.2);
+      font-size: 1.1rem;
+      line-height: 1.6;
+      white-space: pre-wrap;
+    }
+    form {
+      background: linear-gradient(135deg, #6a5b4b, #8b715b);
+      padding: 28px;
+      border-radius: 14px;
+      box-shadow: 0 0 20px rgba(255, 210, 180, 0.25);
+      color: #f8f4ef;
+    }
+    form label {
+      display: block;
+      margin: 12px 0 6px;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 16px;
+      border-radius: 6px;
+      border: 1px solid #e3d5c4;
+      background: #5a4e43;
+      color: #f7f2ec;
+      font-size: 1.1rem;
+      box-shadow: 0 0 8px rgba(200, 170, 140, 0.2);
+    }
+    form button {
+      margin-top: 20px;
+      padding: 16px 24px;
+      background: linear-gradient(135deg, #b6785b, #c8936b);
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      color: #fffaf7;
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(255, 180, 130, 0.5);
+      transition: background 0.3s ease;
+    }
+    form button:hover {
+      background: linear-gradient(135deg, #cd9e79, #d4aa87);
+    }
+    .delete-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: #cd9e79;
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      box-shadow: 0 0 8px rgba(255, 130, 130, 0.3);
+    }
+    .delete-btn:hover {
+      background: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>Evermore</h1>
+      <h2>Taylor Swift</h2>
+    </header>
+
+    <main>
+      <h1>Share Your Evermore Story</h1>
+
+      <!-- Spotify Embed -->
+      <div style="margin-bottom: 40px;">
+        <iframe style="border-radius:12px"
+                src="https://open.spotify.com/embed/album/6AORtDjduMM3bupSWzbTSG?utm_source=generator"
+                width="100%" height="352" frameBorder="0" allowfullscreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"></iframe>
+      </div>
+
+      <!-- Message Submission Form -->
+      <form id="messageForm">
+        <label for="song">Song Title</label>
+        <input type="text" id="song" name="song" required>
+
+        <label for="lyric">Favorite Lyric</label>
+        <input type="text" id="lyric" name="lyric" required>
+
+        <label for="message">Your Message</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+
+        <button type="submit">Post Message</button>
+      </form>
+
+      <!-- Message Display Area -->
+      <ul id="messagesContainer"></ul>
+
+      <div class="description-container">
+        <p>Evermore invites us into stories wrapped in misty woods and warm twilight. It's an album of quiet ache and shimmering hope — a seasonal epilogue to *Folklore*, glowing with its own golden magic.</p>
+      </div>
+    </main>
+  </div>
+
+ <script>
+  const form = document.getElementById('messageForm');
+  const container = document.getElementById('messagesContainer');
+
+  // Load saved messages when the page loads
+  document.addEventListener('DOMContentLoaded', () => {
+    const saved = JSON.parse(localStorage.getItem('evermoreMessages')) || [];
+    saved.forEach(({ song, lyric, message }) => {
+      addMessage(song, lyric, message);
+    });
+  });
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const song = document.getElementById('song').value.trim();
+    const lyric = document.getElementById('lyric').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    if (!song || !lyric || !message) return;
+
+    addMessage(song, lyric, message);
+    saveMessage(song, lyric, message);
+    form.reset();
+  });
+
+  function addMessage(song, lyric, message) {
+    const li = document.createElement('li');
+    li.className = 'track-item';
+
+    const msgBlock = document.createElement('div');
+    msgBlock.className = 'message-block';
+    msgBlock.innerHTML = `
+      <strong>Song:</strong> ${song}<br>
+      <strong>Lyric:</strong> “${lyric}”<br>
+      <strong>Message:</strong> ${message}
+    `;
+
+    const deleteBtn = document.createElement('button');
+    deleteBtn.className = 'delete-btn';
+    deleteBtn.textContent = 'Delete';
+    deleteBtn.onclick = () => {
+      li.remove();
+      removeMessage(song, lyric, message);
+    };
+
+    li.appendChild(deleteBtn);
+    li.appendChild(msgBlock);
+    container.appendChild(li);
+  }
+
+  function saveMessage(song, lyric, message) {
+    const messages = JSON.parse(localStorage.getItem('evermoreMessages')) || [];
+    messages.push({ song, lyric, message });
+    localStorage.setItem('evermoreMessages', JSON.stringify(messages));
+  }
+
+  function removeMessage(song, lyric, message) {
+    let messages = JSON.parse(localStorage.getItem('evermoreMessages')) || [];
+    messages = messages.filter(m => !(m.song === song && m.lyric === lyric && m.message === message));
+    localStorage.setItem('evermoreMessages', JSON.stringify(messages));
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank You – The Poet’s World</title>
+
+  <!-- Poetic Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Crimson+Pro:wght@300;400&display=swap" rel="stylesheet" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Crimson Pro', serif;
+      background: #000;
+      overflow: hidden;
+    }
+
+    body {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: url('https://cdn.shortpixel.ai/spai/q_glossy+ret_img+to_auto/www.slantmagazine.com/wp-content/uploads/2024/04/torturedpoetsdepartment.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(10,10,10,0.8), rgba(50,40,30,0.7));
+      z-index: 0;
+      backdrop-filter: blur(3px);
+    }
+
+    .particles {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .particles span {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: #dcd6b8;
+      border-radius: 50%;
+      opacity: 0.6;
+      animation: float 10s linear infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+      }
+      50% {
+        opacity: 0.6;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1);
+        opacity: 0;
+      }
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 40px 30px;
+      max-width: 800px;
+      width: 90%;
+      text-align: center;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+      animation: fadeIn 2s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+      color: #dcd6b8;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      color: #f4f1e8;
+      margin-bottom: 10px;
+      text-shadow: 0 0 15px #bba68b;
+    }
+
+    .subtitle {
+      font-style: italic;
+      color: #ccc6b2;
+      font-size: 1.3rem;
+      margin-bottom: 30px;
+    }
+
+    .quote {
+      font-style: italic;
+      color: #e2decd;
+      font-size: 1.1rem;
+      min-height: 50px;
+      margin-bottom: 30px;
+      transition: opacity 0.5s;
+    }
+
+    .next-era {
+      font-family: 'Cormorant Garamond', serif;
+      padding: 12px 30px;
+      background: rgba(255, 255, 255, 0.05);
+      color: #f1f1f1;
+      border: 1px solid #bba68b;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .next-era:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fffce8;
+      transform: scale(1.05);
+      box-shadow: 0 0 10px #bba68b;
+    }
+
+    .about {
+      margin-top: 40px;
+      font-size: 0.95rem;
+      color: #c5c0b2;
+      line-height: 1.6;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #a9a394;
+      z-index: 2;
+      font-family: 'Crimson Pro', serif;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .subtitle {
+        font-size: 1.1rem;
+      }
+
+      .quote {
+        font-size: 1rem;
+      }
+
+      .next-era {
+        font-size: 1rem;
+        padding: 10px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="particles" id="particles"></div>
+
+  <div class="container">
+    <div class="logo">✧ The Poet’s Seal ✧</div>
+    <h1>Thank You for Visiting Our Sites</h1>
+    <div class="subtitle">Your presence graced our pages,<br> and your journey now becomes part of the story.</div>
+    <div class="quote" id="quote">“Every visit leaves behind a silent poem.”</div>
+    <a href="index.html" class="next-era">Return Home</a>
+    <div class="about">
+      <p><strong>Farewell:</strong> Thank you for stepping into our world. May the echoes of words linger, and may you find poetry wherever you wander.</p>
+    </div>
+  </div>
+
+  <footer>&copy; 2025 The Poet’s World. All rights reserved.</footer>
+
+  <script>
+    // Quote Carousel
+    const quotes = [
+      "“Every visit leaves behind a silent poem.”",
+      "“Parting is such sweet sorrow, but beauty lingers in the goodbye.”",
+      "“And so, the chapter closes with gratitude and grace.”",
+      "“We meet, we part, we carry verses within us.”",
+      "“Let your footsteps echo where the poetry once lived.”"
+    ];
+    let index = 0;
+    const quoteEl = document.getElementById('quote');
+
+    setInterval(() => {
+      quoteEl.style.opacity = 0;
+      setTimeout(() => {
+        quoteEl.textContent = quotes[(++index) % quotes.length];
+        quoteEl.style.opacity = 1;
+      }, 400);
+    }, 5000);
+
+    // Particle Generator
+    const particlesContainer = document.getElementById('particles');
+    for (let i = 0; i < 50; i++) {
+      const dot = document.createElement('span');
+      dot.style.left = `${Math.random() * 100}%`;
+      dot.style.top = `${Math.random() * 100}%`;
+      dot.style.animationDuration = `${6 + Math.random() * 8}s`;
+      dot.style.opacity = Math.random();
+      particlesContainer.appendChild(dot);
+    }
+  </script>
+</body>
+</html>

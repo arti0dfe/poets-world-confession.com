@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Taylor Swift - Fearless Album</title>
+  <style>
+    /* Styling — unchanged from previous with small addition for delete button */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
+      background: #4b3b2b;
+      font-family: 'Georgia', serif;
+      color: #ddb67a;
+      overflow-y: scroll; /* Make the page scrollable */
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      min-height: 100%;
+    }
+    header {
+      position: relative;
+      background: url('https://media.newyorker.com/photos/60747954c920e996bd1e486d/1:1/w_1326,h_1326,c_limit/Battan-FearlessTaylorsVersion.jpg') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #f7e1a9;
+      text-shadow: 2px 2px 12px rgba(34,23,9,0.96);
+      padding: 5vh 20px;
+      min-height: 50vh;
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(rgba(75, 59, 43, 0.64), rgba(94, 74, 46, 0.7));
+      z-index: 0;
+      mix-blend-mode: multiply;
+    }
+    header > * {
+      position: relative;
+      z-index: 1;
+    }
+    header h1 {
+      font-size: 6rem;
+      font-weight: 700;
+      font-style: italic;
+      letter-spacing: 5px;
+      margin-bottom: 0.25em;
+      font-family: 'Georgia', serif;
+      color: #fae3a9;
+    }
+    header h2 {
+      font-size: 2.75rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      font-family: 'Georgia', serif;
+      color: #efd78f;
+    }
+    main {
+      padding: 40px 80px 80px; /* Increased padding on left and right */
+      max-width: 1200px; /* Increased max-width */
+      margin: 0 auto 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+    .description-container {
+      background: #7b6241;
+      border-radius: 18px;
+      padding: 32px 40px;
+      box-shadow: 0 4px 30px rgba(221, 182, 122, 0.5);
+      color: #f1db9d;
+      font-style: italic;
+      font-size: 1.4rem;
+      line-height: 1.8;
+      border: 1.8px solid #d2a949;
+    }
+    .track-item {
+      background: linear-gradient(145deg, #6e5c38, #9a864c);
+      box-shadow: inset 0 0 18px #b28f22;
+      border-radius: 12px;
+      border: 2.5px solid #d9b75e;
+      margin-bottom: 24px;
+      padding: 24px 30px 30px;
+      color: #b89657;
+      list-style: none;
+      position: relative;
+    }
+    .message-block {
+      background: #7b6241;
+      border-radius: 12px;
+      padding: 16px 24px;
+      box-shadow: inset 0 0 8px #b28f22;
+      color: #f1db9d;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      white-space: pre-wrap;
+    }
+    form {
+      background: #6d5334;
+      padding: 28px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      color: #f0d77b;
+    }
+    form label {
+      display: block;
+      margin: 12px 0 6px;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 16px; /* Increased padding */
+      border-radius: 6px;
+      border: 1px solid #ddb67a;
+      background: #fdf4d1;
+      color: #3e2a10;
+      font-size: 1.1rem;
+    }
+    form button {
+      margin-top: 20px;
+      padding: 16px 24px; /* Increased padding */
+      background-color: #ddb67a;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      color: #3e2a10;
+      cursor: pointer;
+    }
+    form button:hover {
+      background-color: #fae3a9;
+    }
+    .delete-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: #ddb67a;
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+    .delete-btn:hover {
+      background: #ddb67a;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>Fearless</h1>
+      <h2>Taylor Swift</h2>
+    </header>
+
+    <main>
+      <h1>Share Your Fearless Memory</h1>
+
+      <!-- Spotify Embed -->
+      <div style="margin-bottom: 40px;">
+        <iframe style="border-radius:12px" 
+                src="https://open.spotify.com/embed/album/4hDok0OAJd57SGIT8xuWJH?utm_source=generator" 
+                width="100%" height="352" frameBorder="0" allowfullscreen="" 
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                loading="lazy"></iframe>
+      </div>
+
+      <!-- Message Submission Form -->
+      <form id="messageForm">
+        <label for="song">Song Title</label>
+        <input type="text" id="song" name="song" required>
+
+        <label for="lyric">Favorite Lyric</label>
+        <input type="text" id="lyric" name="lyric" required>
+
+        <label for="message">Your Message</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+
+        <button type="submit">Post Message</button>
+      </form>
+
+      <!-- Message Display Area -->
+      <ul id="messagesContainer"></ul>
+
+      <div class="description-container">
+        <p>This playlist is a tribute to the timeless warmth and golden emotions of Taylor Swift's Fearless era. Each song resonates with nostalgia, growth, and romanticism, echoing the heart of youth and dreams.</p>
+      </div>
+    </main>
+  </div>
+
+ <script>
+  const form = document.getElementById('messageForm');
+  const container = document.getElementById('messagesContainer');
+
+  // Load saved messages when the page loads
+  document.addEventListener('DOMContentLoaded', () => {
+    const saved = JSON.parse(localStorage.getItem('fearlessMessages')) || [];
+    saved.forEach(({ song, lyric, message }) => {
+      addMessage(song, lyric, message);
+    });
+  });
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const song = document.getElementById('song').value.trim();
+    const lyric = document.getElementById('lyric').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    if (!song || !lyric || !message) return;
+
+    addMessage(song, lyric, message);
+    saveMessage(song, lyric, message);
+    form.reset();
+  });
+
+  function addMessage(song, lyric, message) {
+    const li = document.createElement('li');
+    li.className = 'track-item';
+
+    const msgBlock = document.createElement('div');
+    msgBlock.className = 'message-block';
+    msgBlock.innerHTML = `
+      <strong>Song:</strong> ${song}<br>
+      <strong>Lyric:</strong> “${lyric}”<br>
+      <strong>Message:</strong> ${message}
+    `;
+
+    const deleteBtn = document.createElement('button');
+    deleteBtn.className = 'delete-btn';
+    deleteBtn.textContent = 'Delete';
+    deleteBtn.onclick = () => {
+      li.remove();
+      removeMessage(song, lyric, message);
+    };
+
+    li.appendChild(deleteBtn);
+    li.appendChild(msgBlock);
+    container.appendChild(li);
+  }
+
+  function saveMessage(song, lyric, message) {
+    const messages = JSON.parse(localStorage.getItem('fearlessMessages')) || [];
+    messages.push({ song, lyric, message });
+    localStorage.setItem('fearlessMessages', JSON.stringify(messages));
+  }
+
+  function removeMessage(song, lyric, message) {
+    let messages = JSON.parse(localStorage.getItem('fearlessMessages')) || [];
+    messages = messages.filter(m => !(m.song === song && m.lyric === lyric && m.message === message));
+    localStorage.setItem('fearlessMessages', JSON.stringify(messages));
+  }
+</script>
+</body>
+</html>

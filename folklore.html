@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Taylor Swift - Folklore Album</title>
+  <style>
+    /* Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
+      font-family: 'Georgia', serif;
+      color: #f0f0f0;
+      background: #222222; /* Muted grey background */
+      background: linear-gradient(135deg, rgb(51,51,51), #333);
+      overflow-y: scroll;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      min-height: 100%;
+    }
+    header {
+      position: relative;
+      background: url('https://www.movienco.co.uk/carteles/fondos/16500/16571-n2.jpg') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #e1e1e1;
+      padding: 5vh 20px;
+      min-height: 50vh;
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(85, 85, 85, 0.8);
+      z-index: 0;
+      mix-blend-mode: multiply;
+    }
+    header > * {
+      position: relative;
+      z-index: 1;
+    }
+    header h1 {
+      font-size: 6rem;
+      font-weight: 700;
+      font-style: italic;
+      letter-spacing: 5px;
+      margin-bottom: 0.25em;
+      color: #e1e1e1;
+    }
+    header h2 {
+      font-size: 2.75rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      color: #d1d1d1;
+    }
+    main {
+      padding: 40px 80px 80px;
+      max-width: 1200px;
+      margin: 0 auto 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+    .description-container {
+      background: rgba(102, 102, 102, 0.7);
+      border-radius: 18px;
+      padding: 32px 40px;
+      box-shadow: 0 4px 30px rgba(169, 169, 169, 0.5);
+      color: #f5f5f5;
+      font-style: italic;
+      font-size: 1.4rem;
+      line-height: 1.8;
+    }
+    .track-item {
+      background: linear-gradient(145deg, #666, #777);
+      box-shadow: inset 0 0 18px rgba(169, 169, 169, 0.5);
+      border-radius: 12px;
+      border: 2.5px solid #d1d1d1;
+      margin-bottom: 24px;
+      padding: 24px 30px 30px;
+      color: #f5f5f5;
+      list-style: none;
+      position: relative;
+    }
+    .message-block {
+      background: #747172;
+      border-radius: 12px;
+      padding: 16px 24px;
+      padding: 16px 24px;
+      box-shadow: inset 0 0 8px #969495;
+      color: #f5f5f5;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      white-space: pre-wrap;
+    }
+    form {
+      background: #666;
+      padding: 28px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      color: #e1e1e1;
+    }
+    form label {
+      display: block;
+      margin: 12px 0 6px;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 16px;
+      border-radius: 6px;
+      border: 1px solid #d1d1d1;
+      background: #444;
+      color: #f5f5f5;
+      font-size: 1.1rem;
+    }
+    form button {
+      margin-top: 20px;
+      padding: 16px 24px;
+      background-color: #555;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      color: #f5f5f5;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+    }
+    form button:hover {
+      background-color: #666;
+    }
+    .delete-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: #747272;
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+    .delete-btn:hover {
+      background: #848181;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>Folklore</h1>
+      <h2>Taylor Swift</h2>
+    </header>
+
+    <main>
+      <h1>Share Your Folklore Memory</h1>
+
+      <!-- Spotify Embed -->
+      <div style="margin-bottom: 40px;">
+        <iframe style="border-radius:12px" 
+                src="https://open.spotify.com/embed/album/1pzvBxYgT6OVwJLtHkrdQK?utm_source=generator"
+                width="100%" height="352" frameBorder="0" allowfullscreen="" 
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                loading="lazy"></iframe>
+      </div>
+
+      <!-- Message Submission Form -->
+      <form id="messageForm">
+        <label for="song">Song Title</label>
+        <input type="text" id="song" name="song" required>
+
+        <label for="lyric">Favorite Lyric</label>
+        <input type="text" id="lyric" name="lyric" required>
+
+        <label for="message">Your Message</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+
+        <button type="submit">Post Message</button>
+      </form>
+
+      <!-- Message Display Area -->
+      <ul id="messagesContainer"></ul>
+
+      <div class="description-container">
+        <p>This playlist encapsulates the dreamlike and introspective sound of Taylor Swift's Folklore era. Each song is a journey into lyrical storytelling, love, and self-reflection.</p>
+      </div>
+    </main>
+  </div>
+
+ <script>
+  const form = document.getElementById('messageForm');
+  const container = document.getElementById('messagesContainer');
+
+  // Load saved messages when the page loads
+  document.addEventListener('DOMContentLoaded', () => {
+    const saved = JSON.parse(localStorage.getItem('folkloreMessages')) || [];
+    saved.forEach(({ song, lyric, message }) => {
+      addMessage(song, lyric, message);
+    });
+  });
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const song = document.getElementById('song').value.trim();
+    const lyric = document.getElementById('lyric').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    if (!song || !lyric || !message) return;
+
+    addMessage(song, lyric, message);
+    saveMessage(song, lyric, message);
+    form.reset();
+  });
+
+  function addMessage(song, lyric, message) {
+    const li = document.createElement('li');
+    li.className = 'track-item';
+
+    const msgBlock = document.createElement('div');
+    msgBlock.className = 'message-block';
+    msgBlock.innerHTML = `
+      <strong>Song:</strong> ${song}<br>
+      <strong>Lyric:</strong> “${lyric}”<br>
+      <strong>Message:</strong> ${message}
+    `;
+
+    const deleteBtn = document.createElement('button');
+    deleteBtn.className = 'delete-btn';
+    deleteBtn.textContent = 'Delete';
+    deleteBtn.onclick = () => {
+      li.remove();
+      removeMessage(song, lyric, message);
+    };
+
+    li.appendChild(deleteBtn);
+    li.appendChild(msgBlock);
+    container.appendChild(li);
+  }
+
+  function saveMessage(song, lyric, message) {
+    const messages = JSON.parse(localStorage.getItem('folkloreMessages')) || [];
+    messages.push({ song, lyric, message });
+    localStorage.setItem('folkloreMessages', JSON.stringify(messages));
+  }
+
+  function removeMessage(song, lyric, message) {
+    let messages = JSON.parse(localStorage.getItem('folkloreMessages')) || [];
+    messages = messages.filter(m => !(m.song === song && m.lyric === lyric && m.message === message));
+    localStorage.setItem('folkloreMessages', JSON.stringify(messages));
+  }
+</script>
+</body>
+</html>
