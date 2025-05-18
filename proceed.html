@@ -1,0 +1,458 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>Taylor Swift Albums - 15vw Width</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #111;
+  color: white;
+}
+
+.dust-particle {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: white;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.8;
+  z-index: 9999;
+
+  /* Glow Effect */
+  box-shadow:
+    0 0 4px white,
+    0 0 8px white,
+    0 0 12px white;
+
+  animation: floatDust linear infinite;
+}
+
+@keyframes floatDust {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(30px) scale(0.5);
+    opacity: 0;
+  }
+}
+
+
+.sparkle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 8px white;
+  pointer-events: none;
+  animation: sparkle-fade 0.8s forwards;
+  z-index: 9999;
+}
+
+@keyframes sparkle-fade {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2);
+  }
+}
+
+h1 {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.album-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  padding: 40px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.album-card {
+  background-color: #222;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  text-align: center;
+  transition: transform 0.2s;
+  position: relative;
+}
+
+  header {
+    background: transparent;
+    width: 100%;
+    padding: 1.2rem 0;
+    text-align: center;
+    box-shadow: 0 0 20px 4px #343432;
+    color: #ffffff;
+    letter-spacing: 1em;
+    font-weight: 700;
+    font-size: 2.4rem;
+    text-shadow:
+      0 0 12px #000000,
+      0 0 26px #aca9a5,
+      0 0 36px #e3e1db;
+    user-select: none;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  .header-fixed-height {
+    height: 68px;
+  }
+
+  main {
+    flex: 1;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .albums-container {
+    display: flex;
+    width: 100vw;
+    height: calc(100vh - 68px);
+    max-height: calc(100vh - 68px);
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #252424 #eddec1;
+  }
+
+  .albums-container::-webkit-scrollbar {
+    height: 10px;
+  }
+
+  .albums-container::-webkit-scrollbar-track {
+    background: #d8d4cc;
+    border-radius: 5px;
+  }
+
+  .albums-container::-webkit-scrollbar-thumb {
+    background: #e4eabd;
+    border-radius: 5px;
+  }
+
+  .album-card {
+    flex: 0 0 auto;
+    height: 100%;
+    width: 15vw;
+    min-width: 0;
+    background: #ff80ab55;
+    border-radius: 0;
+    cursor: pointer;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    flex-direction: column;
+    align-items: center;
+    outline: none;
+    user-select: none;
+  }
+
+  .album-card:focus,
+  .album-card:hover {
+    transform: scale(1.07);
+    z-index: 3;
+  }
+
+  .album-card:hover {
+  transform: scale(1.05);
+}
+
+/* Glow and scale effect on hover */
+.album-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px 3px rgba(255, 255, 255, 0.4); /* white glow */
+}
+
+  /* === DARK OVERLAY EFFECT === */
+.album-card::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.6); /* dark overlay */
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.album-card:hover::after {
+  opacity: 0; /* reveal original image on hover */
+}
+
+  .album-img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 0;
+    transition: box-shadow 0.35s ease;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .album-info {
+    height: 15%;
+    width: 100%;
+    text-align: center;
+    padding: 0.25rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .album-title {
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin: 0;
+    text-shadow: 0 0 12px #e4a540cc;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .album-year {
+    font-size: 0.75rem;
+    color: #ff92acab;
+    margin: 0;
+    text-shadow: 0 0 8px #ff80abcc;
+  }
+
+  @media (max-width: 350px) {
+    .album-card {
+      width: 90vw;
+      height: calc(100vh - 68px);
+    }
+    main {
+      overflow-x: auto;
+    }
+    .album-info {
+      padding: 0.4rem 0;
+    }
+    .album-title {
+      font-size: 1.3rem;
+    }
+    .album-year {
+      font-size: 1.1rem;
+    }
+  
+   footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: #1a1a1a;
+      color: #ccc;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    footer a {
+      display: inline-block;
+      padding: 0.8rem 1.6rem;
+      background-color: #e4a540;
+      color: #000;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+     footer a:hover {
+      background-color: #ffd36b;
+    }
+</style>
+</head>
+<body>
+  <div class="sparkle-container" id="sparkleContainer"></div>
+
+<header class="header-fixed-height">
+  Taylor Swift Albums
+</header>
+<main>
+  <div class="albums-container" role="list" tabindex="0" aria-label="Taylor Swift album list container">
+    
+    <a href="C:\Users\angel\Downloads\sb\fearless.html">
+      <div class="album-card" role="listitem" tabindex="0" aria-label="Album Fearless released in 2008">
+        <img class="album-img" src="https://i.pinimg.com/736x/ba/f0/71/baf0713308d44281f8d59208ba331907.jpg" alt="Fearless album cover" />
+        <div class="album-info">
+          <p class="album-title">Fearless</p>
+          <p class="album-year">2008</p>
+        </div>
+      </div>
+    </a>
+
+    <a href="C:\Users\angel\Downloads\sb\speak now.html">
+      <div class="album-card" role="listitem" tabindex="0" aria-label="Album Speak Now released in 2010">
+        <img class="album-img" src="https://i.pinimg.com/736x/15/13/8c/15138c4d1480a5d8e6381dded94f81a9.jpg" alt="Speak Now album cover" />
+        <div class="album-info">
+          <p class="album-title">Speak Now</p>
+          <p class="album-year">2010</p>
+        </div>
+      </div>
+    </a>
+    
+    <a href="C:\Users\angel\Downloads\sb\red.html">
+  <div class="album-card" role="listitem" tabindex="0" aria-label="Album Red released in 2012">
+    <img class="album-img" src="https://i.pinimg.com/736x/c3/54/55/c3545504abe3bf010a80945bd2475999.jpg" alt="Red album cover" />
+    <div class="album-info">
+      <p class="album-title">Red</p>
+      <p class="album-year">2012</p>
+    </div>
+  </div>
+</a>
+
+<a href="C:\Users\angel\Downloads\sb\1989.html">
+  <div class="album-card" role="listitem" tabindex="0" aria-label="Album 1989 released in 2014">
+    <img class="album-img" src="https://i.pinimg.com/originals/3a/ec/59/3aec59dad8ac41235748f2b387bf7e31.jpg" alt="1989 album cover" />
+    <div class="album-info">
+      <p class="album-title">1989</p>
+      <p class="album-year">2014</p>
+    </div>
+  </div>
+</a>
+
+<a href="C:\Users\angel\Downloads\sb\reputation.html">
+  <div class="album-card" role="listitem" tabindex="0" aria-label="Album Reputation released in 2017">
+    <img class="album-img" src="https://i.pinimg.com/736x/7a/3e/4e/7a3e4e6cf865f92fe570b869c872939e.jpg" alt="Reputation album cover" />
+    <div class="album-info">
+      <p class="album-title">Reputation</p>
+      <p class="album-year">2017</p>
+    </div>
+  </div>
+</a>
+
+<a href="C:\Users\angel\Downloads\sb\lover.html">
+  <div class="album-card" role="listitem" tabindex="0" aria-label="Album Lover released in 2019">
+    <img class="album-img" src="https://i.pinimg.com/originals/b6/e5/59/b6e559521076600a5e2813ddf48e59e5.jpg" alt="Lover album cover" />
+    <div class="album-info">
+      <p class="album-title">Lover</p>
+      <p class="album-year">2019</p>
+    </div>
+  </div>
+</a>
+
+<a href="C:\Users\angel\Downloads\sb\folklore.html">
+  <div class="album-card" role="listitem" tabindex="0" aria-label="Album Folklore released in 2020">
+    <img class="album-img" src="https://i.pinimg.com/736x/83/78/46/837846eb0ca2b8022aa2065be75d9ae3.jpg" alt="Folklore album cover" />
+    <div class="album-info">
+      <p class="album-title">Folklore</p>
+      <p class="album-year">2020</p>
+    </div>
+  </div>
+</a>
+
+<a href="C:\Users\angel\Downloads\sb\evermore.html">
+  <div class="album-card" role="listitem" tabindex="0" aria-label="Album Evermore released in 2020">
+    <img class="album-img" src="https://i.pinimg.com/564x/36/c3/87/36c3875ebfe197cb4c005f2a20b5b16e.jpg" alt="Evermore album cover" />
+    <div class="album-info">
+      <p class="album-title">Evermore</p>
+      <p class="album-year">2020</p>
+    </div>
+  </div>
+</a>
+
+<a href="C:\Users\angel\Downloads\sb\midnights.html">
+  <div class="album-card" role="listitem" tabindex="0" aria-label="Album Midnights released in 2021">
+    <img class="album-img" src="https://i.pinimg.com/736x/d5/23/d7/d523d748920bc13f2690950991df3012.jpg" alt="Midnights album cover" />
+    <div class="album-info">
+      <p class="album-title">Midnights</p>
+      <p class="album-year">2021</p>
+    </div>
+  </div>
+</a>
+
+<a href="C:\Users\angel\Downloads\sb\TTPD.html">
+  <div class="album-card" role="listitem" tabindex="0" aria-label="Album The Tortured Poets Department released in 2023">
+    <img class="album-img" src="https://i.pinimg.com/736x/84/c0/77/84c077d9ab0e4df6c09ceb6e18564254.jpg" alt="The Tortured Poets Department album cover" />
+    <div class="album-info">
+      <p class="album-title">The Tortured Poets Department</p>
+      <p class="album-year">2023</p>
+    </div>
+  </div>
+</a>
+
+</div>
+</main>
+
+ <footer style="text-align:center; padding: 2rem 1rem; background: #1a1a1a; color: #ccc; font-family: 'Poppins', sans-serif;">
+  <p style="margin-bottom: 1rem;">Thank you for visiting our site!</p>
+  <a href="file:///C:/Users/angel/Downloads/sb/last%20part.html" style="
+    display: inline-block;
+    padding: 0.8rem 1.6rem;
+    background-color: #e9e9e8;
+    color: #000;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  " onmouseover="this.style.backgroundColor='#ffd36b'" onmouseout="this.style.backgroundColor='#e4a540'">
+    Go to Final Page
+  </a>
+</footer>
+
+<script>
+document.querySelectorAll('.album-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const sparkle = document.createElement('div');
+    sparkle.className = 'sparkle';
+    const rect = card.getBoundingClientRect();
+    sparkle.style.left = `${e.clientX - rect.left}px`;
+    sparkle.style.top = `${e.clientY - rect.top}px`;
+    card.appendChild(sparkle);
+
+    setTimeout(() => {
+      sparkle.remove();
+    }, 800); // remove after animation
+  });
+});
+</script>
+
+<script>
+function createDustParticle() {
+  const particle = document.createElement('div');
+  particle.className = 'dust-particle';
+
+  const size = Math.random() * 3 + 2; // 2px to 5px
+  particle.style.width = `${size}px`;
+  particle.style.height = `${size}px`;
+
+  particle.style.left = `${Math.random() * window.innerWidth}px`;
+  particle.style.bottom = `0px`;
+
+  const duration = Math.random() * 5 + 5; // 5 to 10s
+  particle.style.animationDuration = `${duration}s`;
+
+  document.body.appendChild(particle);
+
+  setTimeout(() => {
+    particle.remove();
+  }, duration * 1000);
+}
+
+// Generate particles continuously
+setInterval(() => {
+  createDustParticle();
+}, 200); // create a new particle every 200ms
+</script>
+
+
+  </body>
+</html>
