@@ -266,5 +266,55 @@
     localStorage.setItem('fearlessMessages', JSON.stringify(messages));
   }
 </script>
+  <script>
+  const form = document.getElementById('messageForm');
+  const container = document.getElementById('messagesContainer');
+
+  document.addEventListener('DOMContentLoaded', () => {
+    db.collection("messages").onSnapshot(snapshot => {
+      container.innerHTML = ''; // Clear existing
+      snapshot.forEach(doc => {
+        const data = doc.data();
+        addMessage(data.song, data.lyric, data.message, doc.id);
+      });
+    });
+  });
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const song = document.getElementById('song').value.trim();
+    const lyric = document.getElementById('lyric').value.trim();
+    const message = document.getElementById('message').value.trim();
+    if (!song || !lyric || !message) return;
+
+    db.collection("messages").add({ song, lyric, message });
+    form.reset();
+  });
+
+  function addMessage(song, lyric, message, id) {
+    const li = document.createElement('li');
+    li.className = 'track-item';
+
+    const msgBlock = document.createElement('div');
+    msgBlock.className = 'message-block';
+    msgBlock.innerHTML = `
+      <strong>Song:</strong> ${song}<br>
+      <strong>Lyric:</strong> “${lyric}”<br>
+      <strong>Message:</strong> ${message}
+    `;
+
+    const deleteBtn = document.createElement('button');
+    deleteBtn.className = 'delete-btn';
+    deleteBtn.textContent = 'Delete';
+    deleteBtn.onclick = () => {
+      db.collection("messages").doc(id).delete();
+    };
+
+    li.appendChild(deleteBtn);
+    li.appendChild(msgBlock);
+    container.appendChild(li);
+  }
+</script>
+
 </body>
 </html>
